@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20181.18.0510.1418                               -->
+<workbook original-version='18.1' source-build='2018.1.1 (20181.18.0510.1418)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='df_Fraud_precision_recall' inline='true' name='federated.07ygixa0h0y8di1cm6m881h7c6re' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='df_Fraud_precision_recall' name='textscan.1bf8sgb1x8gwbd180xl9s0pl39eq'>
+            <connection class='textscan' directory='D:/bkp1/faez/13-01-2025/Task 2/Software_files' filename='df_Fraud_precision_recall.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.1bf8sgb1x8gwbd180xl9s0pl39eq' name='df_Fraud_precision_recall.csv' table='[df_Fraud_precision_recall#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_GB' separator=','>
+            <column datatype='string' name='Thresholds' ordinal='0' />
+            <column datatype='real' name='Recall' ordinal='1' />
+            <column datatype='real' name='Precision' ordinal='2' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[df_Fraud_precision_recall.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;£&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Thresholds</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Thresholds]</local-name>
+            <parent-name>[df_Fraud_precision_recall.csv]</parent-name>
+            <remote-alias>Thresholds</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Recall</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Recall]</local-name>
+            <parent-name>[df_Fraud_precision_recall.csv]</parent-name>
+            <remote-alias>Recall</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Precision</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Precision]</local-name>
+            <parent-name>[df_Fraud_precision_recall.csv]</parent-name>
+            <remote-alias>Precision</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column datatype='string' name='[Thresholds]' role='dimension' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.447837' measure-ordering='alphabetic' measure-percentage='0.552163' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Threshold-wise Precision and Recall</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='df_Fraud_precision_recall' name='federated.07ygixa0h0y8di1cm6m881h7c6re' />
+          </datasources>
+          <datasource-dependencies datasource='federated.07ygixa0h0y8di1cm6m881h7c6re'>
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
+            <column datatype='real' name='[Precision]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Recall]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Thresholds]' role='dimension' type='nominal' />
+            <column-instance column='[Thresholds]' derivation='None' name='[none:Thresholds:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Precision]' derivation='Sum' name='[sum:Precision:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Recall]' derivation='Sum' name='[sum:Recall:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.07ygixa0h0y8di1cm6m881h7c6re].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07ygixa0h0y8di1cm6m881h7c6re].[sum:Precision:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.07ygixa0h0y8di1cm6m881h7c6re].[sum:Recall:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.07ygixa0h0y8di1cm6m881h7c6re].[none:Thresholds:nk]'>
+            <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='SUM([Number of Records])' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:Thresholds:nk]' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-manual-selection-is-empty='true' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.07ygixa0h0y8di1cm6m881h7c6re].[none:Thresholds:nk]</column>
+            <column>[federated.07ygixa0h0y8di1cm6m881h7c6re].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.07ygixa0h0y8di1cm6m881h7c6re].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.07ygixa0h0y8di1cm6m881h7c6re].[Multiple Values]</rows>
+        <cols>([federated.07ygixa0h0y8di1cm6m881h7c6re].[none:Thresholds:nk] / [federated.07ygixa0h0y8di1cm6m881h7c6re].[:Measure Names])</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.07ygixa0h0y8di1cm6m881h7c6re].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.07ygixa0h0y8di1cm6m881h7c6re].[:Measure Names]</field>
+            <field>[federated.07ygixa0h0y8di1cm6m881h7c6re].[none:Thresholds:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>
